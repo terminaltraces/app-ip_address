@@ -46,6 +46,7 @@ class IpAddress {
 
     // Initialize return arguments for callback
     let firstIpAddress = null;
+    let IPv6Address = null;
     let callbackError = null;
 
     // Instantiate an object from the imported class and assign the instance to variable cidr.
@@ -66,7 +67,7 @@ class IpAddress {
         // If the passed CIDR is valid, call the object's toArray() method.
         // Notice the destructering assignment syntax to get the value of the first array's element.
         //
-        //[firstIpAddress] = ipObject.ipv4
+        
         [firstIpAddress] = cidr.toArray(options)
         IPv6Address = getIpv4MappedIpv6Address(firstIpAddress)
     }
@@ -75,7 +76,7 @@ class IpAddress {
     // The IAP convention is to pass returned data as the first argument and error
     // data as the second argument to the callback function.
     return callback({ipv4: firstIpAddress, ipv6: IPv6Address}, callbackError);
-    }
+  }
 }
 
 module.exports = new IpAddress;
